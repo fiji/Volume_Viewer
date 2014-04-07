@@ -25,6 +25,13 @@
 		</dependency>
 	</dependencies>
 
+	<scm>
+		<connection>scm:git:git://github.com/fiji/Volume_Viewer</connection>
+		<developerConnection>scm:git:git@github.com:fiji/Volume_Viewer</developerConnection>
+		<tag>HEAD</tag>
+		<url>https://github.com/fiji/Volume_Viewer</url>
+	</scm>
+
 	<repositories>
 		<!-- NB: for project parent, in case of partial checkout -->
 		<repository>
