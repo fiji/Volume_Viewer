@@ -25,6 +25,11 @@
 		</dependency>
 	</dependencies>
 
+	<ciManagement>
+		<system>Jenkins</system>
+		<url>http://jenkins.imagej.net/job/Volume_Viewer/</url>
+	</ciManagement>
+
 	<scm>
 		<connection>scm:git:git://github.com/fiji/Volume_Viewer</connection>
 		<developerConnection>scm:git:git@github.com:fiji/Volume_Viewer</developerConnection>
