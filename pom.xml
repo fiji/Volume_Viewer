@@ -18,24 +18,16 @@
 	<name>plugins/Volume_Viewer.jar</name>
 	<description></description>
 
-	<dependencies>
-		<dependency>
-			<groupId>net.imagej</groupId>
-			<artifactId>ij</artifactId>
-		</dependency>
-	</dependencies>
-
-	<ciManagement>
-		<system>Jenkins</system>
-		<url>http://jenkins.imagej.net/job/Volume_Viewer/</url>
-	</ciManagement>
-
 	<scm>
 		<connection>scm:git:git://github.com/fiji/Volume_Viewer</connection>
 		<developerConnection>scm:git:git@github.com:fiji/Volume_Viewer</developerConnection>
 		<tag>HEAD</tag>
 		<url>https://github.com/fiji/Volume_Viewer</url>
 	</scm>
+	<ciManagement>
+		<system>Jenkins</system>
+		<url>http://jenkins.imagej.net/job/Volume_Viewer/</url>
+	</ciManagement>
 
 	<repositories>
 		<!-- NB: for project parent -->
@@ -44,5 +36,13 @@
 			<url>http://maven.imagej.net/content/groups/public</url>
 		</repository>
 	</repositories>
+
+	<dependencies>
+		<!-- ImageJ dependencies -->
+		<dependency>
+			<groupId>net.imagej</groupId>
+			<artifactId>ij</artifactId>
+		</dependency>
+	</dependencies>
 
 </project>
