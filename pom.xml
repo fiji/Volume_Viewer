@@ -21,6 +21,10 @@
 		<tag>HEAD</tag>
 		<url>https://github.com/fiji/Volume_Viewer</url>
 	</scm>
+	<issueManagement>
+		<system>GitHub Issues</system>
+		<url>https://github.com/fiji/Volume_Viewer/issues</url>
+	</issueManagement>
 	<ciManagement>
 		<system>Jenkins</system>
 		<url>http://jenkins.imagej.net/job/Volume_Viewer/</url>
