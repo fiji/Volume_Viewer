@@ -83,8 +83,8 @@
 		<url>https://github.com/fiji/Volume_Viewer/issues</url>
 	</issueManagement>
 	<ciManagement>
-		<system>Jenkins</system>
-		<url>http://jenkins.imagej.net/job/Volume_Viewer/</url>
+		<system>Travis CI</system>
+		<url>https://travis-ci.org/fiji/Volume_Viewer</url>
 	</ciManagement>
 
 	<properties>
