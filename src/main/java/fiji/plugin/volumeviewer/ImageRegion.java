@@ -193,6 +193,34 @@ class ImageRegion extends JPanel {
 
 		plotNumber++;
 	}
+	
+	public synchronized ImagePlus getImage() {
+		BufferedImage bufferedImage =  new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+
+		paint(bufferedImage.createGraphics());
+
+		Graphics2D g2d = bufferedImage.createGraphics();
+		Color backgroundColor = control.backgroundColor;
+		if (backgroundColor.getRed()+ backgroundColor.getGreen() + backgroundColor.getGreen() > 3*128)
+			g2d.setColor(Color.black);
+		else
+			g2d.setColor(Color.white);
+
+		g2d.drawString("Volume Viewer", width - 100, height - 10); 
+		g2d.dispose();
+
+		String s = "Volume_Viewer_"+plotNumber;
+
+		ImagePlus plotImage = NewImage.createRGBImage (s, width, height, 1, NewImage.FILL_BLACK);
+
+		ImageProcessor ip = plotImage.getProcessor();
+
+		int[] pixels = (int[]) ip.getPixels();
+		bufferedImage.getRGB(0, 0, width, height, pixels, 0, width);
+
+		plotNumber++;
+		return plotImage;
+	}
 
 	//-------------------------------------------------------------------
 	public void paintComponent(Graphics g) {

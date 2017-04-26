@@ -172,6 +172,114 @@ public final class Volume_Viewer implements PlugIn {
 		}
 	}
 	
+	public ImagePlus get3DVisualization(ImagePlus newImp, 
+			boolean showTF, 
+			int renderMode,
+			int interpolationMode,
+			Color backgroundColor,
+			int lutNr,	
+			float sampling,
+			float dist,
+			boolean showAxes,
+			boolean showSlices,
+			boolean showClipLines,
+			float scale,
+			float angleX,
+			float angleY,
+			float angleZ,
+			int alphaMode,
+			int windowWidthImageRegion,
+			int windowHeight,
+			boolean useLight,
+			float ambientValue,
+			float diffuseValue,
+			float specularValue,
+			float shineValue,
+			float objectLightValue,
+			int lightRed,
+			int lightGreen,
+			int lightBlue,
+			float rotationLightX,	//-1.0 to + 1.0 (on trackball from left (=-1.0), from right (=1.0))
+			float rotationLightY) {	//-1.0 to + 1.0 (on trackball from up (=-1.0), from down (=1.0))
+		
+		control = new Control(this);
+		
+		//set prefs
+		control.showTF = showTF;
+		control.renderMode = renderMode;
+		control.interpolationMode = interpolationMode;
+		control.backgroundColor =  backgroundColor;
+		control.lutNr = lutNr;
+		control.sampling = sampling;
+		control.dist = dist;
+		control.showAxes = showAxes;
+		control.showSlices = showSlices;
+		control.showClipLines = showClipLines;
+		control.scale = scale;
+		control.degreeX = angleX;
+		control.degreeY = angleY;
+		control.degreeZ = angleZ;
+		control.alphaMode = alphaMode;
+		control.windowWidthImageRegion = windowWidthImageRegion;
+//		control.windowWidthSlices = windowWidthSlices;
+		control.windowHeight = windowHeight;
+		control.useLight = useLight;
+		control.ambientValue = ambientValue;
+		control.diffuseValue = diffuseValue;
+		control.specularValue = specularValue;
+		control.shineValue = shineValue;
+		control.objectLightValue = objectLightValue;
+		control.lightRed = lightRed;
+		control.lightGreen = lightGreen;
+		control.lightBlue = lightBlue;
+		control.snapshot = true;
+		
+		imp = newImp;
+		
+		if(imp.getType()==ImagePlus.COLOR_RGB) 	// Check for RGB stack.
+			control.isRGB = true;
+
+		vol = new Volume(control, this);
+		
+		lookupTable = new LookupTable(control, this);
+		lookupTable.readLut();
+		
+		cube = new Cube(control, vol.widthV, vol.heightV, vol.depthV);
+		cube.setSlicePositions(control.positionFactorX, control.positionFactorY, control.positionFactorZ, control.zAspect);
+		
+		tr = new Transform(control, control.windowWidthImageRegion, control.windowHeight, vol.xOffa, vol.yOffa, vol.zOffa);	
+		tr.setScale(control.scale);
+		tr.setZAspect(control.zAspect);
+		setRotation(control.degreeX, control.degreeY, control.degreeZ);
+		initializeTransformation();
+		cube.setTransform(tr);
+		cube.setTextPositions(control.scale, control.zAspect);
+		trLight = new Transform(control, -1, -1, 0, 0, 0);
+		trLight.initializeTransformation();
+		
+		gradientLUT = new Gradient(control, this, 256, 18);
+
+		gui = new Gui(control, this);
+		gui.makeGui();
+		gui.newDisplayMode();
+
+		lookupTable.setLut();
+		lookupTable.orig();
+		
+		this.changeRotationLight(0, 0, (int)Math.round((1f+rotationLightX)*10), (int)Math.round((rotationLightY)*10), 20);
+		do {
+			try {
+				Thread.sleep(50);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		} while (!control.isReady);
+		
+		ImagePlus imp2 = gui.imageRegion.getImage();
+		cleanup();
+		return imp2;
+	}
+	
 	void reset() {
 		tf_rgb = null;
 		tf_a1 = null;
