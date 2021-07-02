@@ -83,8 +83,8 @@
 		<url>https://github.com/fiji/Volume_Viewer/issues</url>
 	</issueManagement>
 	<ciManagement>
-		<system>Travis CI</system>
-		<url>https://travis-ci.org/fiji/Volume_Viewer</url>
+		<system>GitHub Actions</system>
+		<url>https://github.com/fiji/Volume_Viewer/actions</url>
 	</ciManagement>
 
 	<properties>
@@ -93,7 +93,7 @@
 		<license.copyrightOwners>Fiji developers.</license.copyrightOwners>
 
 		<!-- NB: Deploy releases to the SciJava Maven repository. -->
-		<releaseProfiles>deploy-to-scijava</releaseProfiles>
+		<releaseProfiles>sign,deploy-to-scijava</releaseProfiles>
 	</properties>
 
 	<repositories>
