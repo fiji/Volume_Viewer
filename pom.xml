@@ -15,7 +15,7 @@
 
 	<name>Volume Viewer</name>
 	<description>Volume Viewer plugin for Fiji.</description>
-	<url>https://imagej.net/Volume_Viewer</url>
+	<url>https://imagej.net/plugins/volume-viewer</url>
 	<inceptionYear>2005</inceptionYear>
 	<organization>
 		<name>Fiji</name>
@@ -33,7 +33,7 @@
 		<developer>
 			<id>kaibarthel</id>
 			<name>Kai Uwe Barthel</name>
-			<url>https://imagej.net/User:Kai</url>
+			<url>https://imagej.net/people/kaibarthel</url>
 			<roles>
 				<role>founder</role>
 				<role>lead</role>
@@ -46,7 +46,7 @@
 		<developer>
 			<id>ctrueden</id>
 			<name>Curtis Rueden</name>
-			<url>https://imagej.net/User:Rueden</url>
+			<url>https://imagej.net/people/ctrueden</url>
 			<roles>
 				<role>maintainer</role>
 			</roles>
@@ -55,12 +55,12 @@
 	<contributors>
 		<contributor>
 			<name>Johannes Schindelin</name>
-			<url>https://imagej.net/User:Schindelin</url>
+			<url>https://imagej.net/people/dscho</url>
 			<properties><id>dscho</id></properties>
 		</contributor>
 		<contributor>
 			<name>Mark Hiner</name>
-			<url>https://imagej.net/User:Hinerm</url>
+			<url>https://imagej.net/people/hinerm</url>
 			<properties><id>hinerm</id></properties>
 		</contributor>
 	</contributors>
