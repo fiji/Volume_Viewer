@@ -509,7 +509,7 @@ public final class Volume_Viewer implements PlugIn {
 				"dist=",
 				"axes=",
 				"slices=",
-				"clipping",
+				"clipping=",
 				"scale=",
 				"angle_x=",
 				"angle_y=",
