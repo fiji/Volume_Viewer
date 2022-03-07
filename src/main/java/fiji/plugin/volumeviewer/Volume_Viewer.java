@@ -118,7 +118,6 @@ public final class Volume_Viewer implements PlugIn {
 		}
 		
 		imp = WindowManager.getCurrentImage();
-		String stackName = imp.getTitle();
 		if (imp == null  || !(imp.getStackSize() > 1)) {
 			IJ.showMessage("Stack required");
 			return;
@@ -168,6 +167,7 @@ public final class Volume_Viewer implements PlugIn {
 			cleanup();
 		}
 		else {
+			String stackName = imp.getTitle();
 			frame = new JFrame("Volume Viewer " +  version + " (" + stackName + ")");
 			frame.setLocation(control.xloc,control.yloc);
 			frame.addWindowListener(new WindowAdapter() {
