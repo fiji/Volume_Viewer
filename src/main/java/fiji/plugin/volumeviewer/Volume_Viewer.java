@@ -183,13 +183,6 @@ public final class Volume_Viewer implements PlugIn {
 			gui.requestFocus();
 			frame.pack(); 
 			frame.validate();
-
-			// add component/resize listener
-			frame.addComponentListener(new ComponentAdapter(){
-				public void componentResized(ComponentEvent event) {
-					buildFrame();
-				}
-			});
 		}
 	}
 	
