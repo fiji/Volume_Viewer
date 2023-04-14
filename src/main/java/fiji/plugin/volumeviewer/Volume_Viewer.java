@@ -167,7 +167,8 @@ public final class Volume_Viewer implements PlugIn {
 			cleanup();
 		}
 		else {
-			frame = new JFrame("Volume Viewer " +  version + " ");
+			String stackName = imp.getTitle();
+			frame = new JFrame("Volume Viewer " +  version + " (" + stackName + ")");
 			frame.setLocation(control.xloc,control.yloc);
 			frame.addWindowListener(new WindowAdapter() {
 				public void windowClosing(WindowEvent e) {
